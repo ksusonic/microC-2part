@@ -1,6 +1,3 @@
-#define KEYPAD_PORT PORTB
-#define KEYPAD_DDR DDRB
-#define KEYPAD_PIN PINB
 #define UART_Init uart_init
 #define UART_Write uart_send
 #define UART_Recieve uart_recieve
@@ -8,8 +5,6 @@
 #define BAUD 19200
 #define F_CPU 10000000
 #define BAUDRATE ((F_CPU) / (BAUD * 16) - 1)
-#define endl "\r\n"
-int type;
 
 
 void uart_init(void)
@@ -33,7 +28,6 @@ void uart_send_str(char *string_input)
     while (*string_input != '\0')
     {
         uart_send(*string_input);
-//        delay_ms(25);
         string_input++;
     }
 }
@@ -68,16 +62,10 @@ void display_uart_pressed_button(void)
         char current_input = PINA;
         if (current_input != 0x00)
         {
-//            PORTB = current_input;
             UART_Write(get_char(get_int(current_input)));
             UART_Write('\0');
             while (PINA != 0x00)
             ;
-
-                
-//            DDRA = 0xFF;
-//            while (1)
-//            ;
         }
     }
 }
@@ -85,18 +73,13 @@ void display_uart_pressed_button(void)
 void ogonek() {
  while(1) {
    PORTA = uart_recieve();
-//    while (PINA != 0x00)
-//            ;
  }
 }
 
 void main() {
     UART_Init();
 
-//    DDRB = 0xFF;  // SETTING PORTB AS OUTPUT
-//    PORTB = 0x00; // and DEFAULT OUTPUT 0
-
-    DDRA = 0xFF;  // SETTING PORTA AS output   //INPUT
+    DDRA = 0xFF;  // SETTING PORTA AS output
     PORTA = 0x00; // and DEFAULT INPUT 0
 
 //    display_uart_pressed_button();
