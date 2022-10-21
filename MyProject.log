@@ -1,0 +1,5 @@
+0	1	mikrocAVR.exe -MSF -DBG -pATMEGA128 -DL -SSA -O11111114 -fo10 -BOOTSZ4096 -BOOTOP0 -N"C:\BIV194\MT\MyProject.mcpav" -SP"C:\Program Files (x86)\MikroElectronika\mikroC PRO for AVR\Defs\" -SP"C:\Program Files (x86)\MikroElectronika\mikroC PRO for AVR\Uses\lte64kw\" -SP"C:\BIV194\MT\" -IP"C:\Program Files (x86)\MikroElectronika\mikroC PRO for AVR\Uses\lte64kw\" -IP"C:\BIV194\MT\" "MyProject.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl"	 
+error: 0	340	File 'MyProject.c' not found	 
+diagnostics: 0	127	All files Compiled in 0 ms	 
+error: 0	357	main function is not defined	main function is not defined
+error: 0	102	Finished (with errors): 18 окт 2022, 13:37:07	MyProject.mcpav

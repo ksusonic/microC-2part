@@ -1,0 +1,7 @@
+[PROJECTS]
+Count=3
+Project0=..\..\DLN\MyProject.mcpav
+Project1=..\MyProject.mcpav
+Project2=MyProject.mcpav
+[ActiveProject]
+Index=1
