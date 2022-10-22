@@ -7,7 +7,6 @@
 #include <QByteArray>
 #include <QDebug>
 
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -28,6 +27,9 @@ void MainWindow::on_pushButton_clicked()
     port.setPort(QSerialPortInfo(s));
     port.setDataBits(QSerialPort::Data8);
     port.setStopBits(QSerialPort::OneStop);
+    port.setParity(QSerialPort::NoParity);
+    port.setFlowControl(QSerialPort::NoFlowControl);
+
     port.open(QIODevice::ReadWrite);
     QMessageBox msgBox;
     msgBox.setText(port.portName());
@@ -47,28 +49,39 @@ void MainWindow::on_pushButton_2_clicked()
 
 }
 
-void MainWindow::on_button_enter_clicked()
+void MainWindow::on_textEdit_textChanged()
 {
-    auto test = ui->textEdit_4->toPlainText().toStdString();
-    if (ui->textEdit_4->toPlainText().size() > 0) {
-         const char* str = test.c_str();
-        qDebug() << "writing " << str;
-        port.write(str);
-        if (!port.waitForBytesWritten()) {
-            qDebug() << "error sending byte";
-        }
 
-    } else {
-        qDebug() << "textEdit_3 is empty";
-    }
 }
 
-void MainWindow::startWrite() {
-    int lastIndex = ui->textEdit_4->toPlainText().length() - 1;
-    QChar contentToSend = ui->textEdit_4->toPlainText()[lastIndex];
-    QByteArray byteArray = QString("%1").arg(contentToSend).toLocal8Bit();
-    //qDebug() << byteArray.data() << byteArray << contentToSend << QString("%1").arg(contentToSend);
-    port.write(byteArray.data());
+void MainWindow::on_textEdit_2_textChanged()
+{
+
+}
+
+
+void MainWindow::on_button_enter_clicked()
+{
+    const auto test = ui->lineEdit->text().toStdString();
+    //char data[3] = {'1', '2', '\0'};
+    QByteArray data = ui->lineEdit->text().toLatin1();//
+    data.append('\0');
+     port.write(data);//, sizeof(data));
+      // port.write(test.c_str(), test.size() < 7 ? test.size() : 7);
+//    if (test.size() > 0) {
+//        for (int i = 0;  i < (test.size() < 7 ? test.size() : 7); ++i) {
+//            auto c = test[i];
+//            qDebug() << "iteration " << i << " -> " << c;
+//            auto cu = char(c.toLatin1());
+//            port.write(&cu);
+//        }
+
+  //  port.write('\0');
+    if (!port.waitForBytesWritten()) {
+        qDebug() << "error sending byte";
+    } else {
+        qDebug() << "successfully written";
+    }
 }
 
 

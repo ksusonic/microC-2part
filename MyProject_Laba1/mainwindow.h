@@ -23,10 +23,8 @@ private slots:
     void on_pushButton_2_clicked();
     void on_textEdit_textChanged();
     void on_textEdit_2_textChanged();
-    void on_textEdit_4_textChanged();
     void on_button_enter_clicked();
     void on_button_see_clicked();
-    void startWrite();
 
 private:
     Ui::MainWindow *ui;

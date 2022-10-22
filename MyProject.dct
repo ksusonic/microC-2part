@@ -299,7 +299,6 @@ delay_5ms
 delay_80us
 delay_8ms
 delay_cyc
-display_uart_pressed_button
 div_16x16_s
 div_16x16_u
 div_32x32_s
@@ -419,9 +418,7 @@ foc3b
 foc3b_bit
 foc3c
 foc3c_bit
-get_char
 get_fosc_khz
-get_int
 hwmul_16x16
 hwmul_32x32
 ices1
@@ -613,7 +610,6 @@ jtd
 jtd_bit
 jtrf
 jtrf_bit
-main
 mcucr
 mcucsr
 mpcm0
@@ -924,7 +920,6 @@ ocr3cl6
 ocr3cl6_bit
 ocr3cl7
 ocr3cl7_bit
-ogonek
 osccal
 output_to_input_offset
 pgers
@@ -1575,10 +1570,6 @@ u2x0
 u2x0_bit
 u2x1
 u2x1_bit
-uart_init
-uart_recieve
-uart_send
-uart_send_str
 ubrr0
 ubrr0_bit
 ubrr0_ubrr0l_bit

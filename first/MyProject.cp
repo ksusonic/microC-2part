@@ -1,6 +1,11 @@
-#line 1 "C:/BIV194/MT/first/MyProject.c"
-#line 12 "C:/BIV194/MT/first/MyProject.c"
-int type;
+#line 1 "C:/BIV194/microC-2part-trunk/first/MyProject.c"
+
+
+
+
+
+
+
 
 
 void uart_init(void)
@@ -24,7 +29,6 @@ void uart_send_str(char *string_input)
  while (*string_input != '\0')
  {
  uart_send(*string_input);
-
  string_input++;
  }
 }
@@ -59,33 +63,34 @@ void display_uart_pressed_button(void)
  char current_input = PINA;
  if (current_input != 0x00)
  {
-
   uart_send (get_char(get_int(current_input)));
   uart_send ('\0');
  while (PINA != 0x00)
  ;
-
-
-
-
-
  }
  }
 }
 
 void ogonek() {
+while (1)
+{
+ int counter = 0;
+ char stroka[7];
  while(1) {
- PORTA = uart_recieve();
-
-
+ char current = uart_recieve();
+ if (current != '\0' && counter < 7) {
+ stroka[counter] = current;
+ counter++;
+ } else {
+ PORTA = counter;
+ break;
+ }
+ }
  }
 }
 
 void main() {
   uart_init ();
-
-
-
 
  DDRA = 0xFF;
  PORTA = 0x00;
