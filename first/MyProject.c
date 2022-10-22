@@ -71,8 +71,20 @@ void display_uart_pressed_button(void)
 }
 
 void ogonek() {
- while(1) {
-   PORTA = uart_recieve();
+while (1)
+{
+  int counter = 0;
+  char stroka[7];
+   while(1) {
+     char current = uart_recieve();
+     if (current != '\0' && counter < 7) {
+        stroka[counter] = current;
+        counter++;
+     } else {
+       PORTA = counter;
+       break;
+     }
+   }
  }
 }
 
